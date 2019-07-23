@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>  
+    
+    <definition name="base.definition"  
+        template="/WEB-INF/views/tiles/layout.jsp">  
+        <put-attribute name="title" value="" />  
+        <put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />  
+        <put-attribute name="menu" value="/WEB-INF/views/tiles/menu.jsp" />  
+        
+        <put-attribute name="body" value="" />  
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />  
+    </definition>  
+	   <definition name="base.login" template="/WEB-INF/views/tiles/loginlayout.jsp">  
+         <put-attribute name="title" value="" />  
+        <put-attribute name="body" value="" />  
+    </definition> 
+     
+    
+    <definition name="login" extends="base.login">
+     <put-attribute name="title" value="User login" />    
+        <put-attribute name="body" value="/WEB-INF/views/login.jsp" />  
+    </definition> 
+	<definition name="welcome" extends="base.definition">  
+        <put-attribute name="title" value="Hello World" />  
+        <put-attribute name="body" value="/WEB-INF/views/welcome.jsp" />  
+    </definition> 
+     <definition name="fileuploadform" extends="base.definition">  
+        <put-attribute name="title" value="index" />  
+        <put-attribute name="body" value="/WEB-INF/views/fileuploadform.jsp" />  
+    </definition> 
+     <definition name="fileuploadsuccess" extends="base.definition">  
+        <put-attribute name="title" value="index" />  
+        <put-attribute name="body" value="/WEB-INF/views/fileuploadsuccess.jsp" />  
+    </definition> 
+    <definition name="hello" extends="base.definition">  
+        <put-attribute name="title" value="index" />  
+        <put-attribute name="body" value="/WEB-INF/views/hello.jsp" />  
+    </definition> 
+     <definition name="user_register" extends="base.definition">  
+        <put-attribute name="title" value="Register" />  
+        <put-attribute name="body" value="/WEB-INF/views/user_register.jsp" />  
+    </definition> 
+     <definition name="role1" extends="base.definition">  
+        <put-attribute name="title" value="role" />  
+        <put-attribute name="body" value="/WEB-INF/views/role.jsp" />  
+    </definition> 
+     <definition name="my_file" extends="base.definition">  
+        <put-attribute name="title" value="Storage" />  
+        <put-attribute name="body" value="/WEB-INF/views/my_file.jsp" />  
+    </definition> 
+      <definition name="share_file" extends="base.definition">  
+        <put-attribute name="title" value="Storage" />  
+        <put-attribute name="body" value="/WEB-INF/views/share_file.jsp" />  
+    </definition>  
+      <definition name="documentsend" extends="base.definition">  
+        <put-attribute name="title" value="Storage" />  
+        <put-attribute name="body" value="/WEB-INF/views/documentsend.jsp" />  
+    </definition>   
+      <definition name="messagesend" extends="base.definition">  
+        <put-attribute name="title" value="message" />  
+        <put-attribute name="body" value="/WEB-INF/views/messagesend.jsp" />  
+    </definition>
+    <definition name="viewMessage" extends="base.definition">  
+        <put-attribute name="title" value="message" />  
+        <put-attribute name="body" value="/WEB-INF/views/viewmessage.jsp" />  
+    </definition>
+    <definition name="receivedMessage" extends="base.definition">  
+        <put-attribute name="title" value="Received Message" />  
+        <put-attribute name="body" value="/WEB-INF/views/received_message.jsp" />  
+    </definition>
+    
+     <definition name="message_detail" extends="base.definition">  
+        <put-attribute name="title" value="Received Message" />  
+        <put-attribute name="body" value="/WEB-INF/views/message_detail.jsp" />  
+    </definition>
+</tiles-definitions>  

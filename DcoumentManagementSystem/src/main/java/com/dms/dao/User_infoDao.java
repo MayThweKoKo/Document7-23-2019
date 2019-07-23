@@ -1,0 +1,13 @@
+package com.dms.dao;
+
+import java.util.List;
+
+import com.dms.entity.User_info;
+public interface User_infoDao {
+	public List<User_info> viewAllUser_info();
+	public User_info searchUser_info(long id);
+	public void deleteUser_info(User_info user_info);
+	public void saveOrUpdateUser_info(User_info user_info);
+	public List<User_info> searchId(String username);
+	public User_info search_User(long id);
+}
