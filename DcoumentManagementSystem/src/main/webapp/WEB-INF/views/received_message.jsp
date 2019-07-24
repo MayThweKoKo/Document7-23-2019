@@ -48,7 +48,8 @@ here
 		</thead>
 		<tbody>
 			<c:forEach var="message" items="${messageList}" varStatus="row">
-				<tr>
+			<c:if test="${message.receivedDate eq null }">
+			<tr class="table-info">
 					<td>${row.count }</td>
 					<td>${message.senderName}</td>
 					<td>${message.title }</td>
@@ -60,6 +61,22 @@ here
 					
 					</td>
 		</tr>
+			</c:if>
+			<c:if test="${message.receivedDate ne null }">
+			<tr>
+					<td>${row.count }</td>
+					<td>${message.senderName}</td>
+					<td>${message.title }</td>
+					<td>${message.description }</td>
+					<td>${message.sendDate }</td>					
+					<td>
+					<a href='updateMess/${message.id}'>Update</a>
+					|<a href="<c:url value='/message_detail.htm/${message.id}' />">View</a>
+					
+					</td>
+		</tr>
+			</c:if>
+				
 	</c:forEach>
 	</tbody>
 </table>

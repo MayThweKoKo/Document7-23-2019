@@ -82,9 +82,15 @@ public class MessageServiceImpl implements MessageService{
 		return messageDao.getMessage(msgId, userId);
 	}
 	@Override
-	public void updateReceiveDate(Date date) {
-		// TODO Auto-generated method stub
-		messageDao.updateReceiveDate(date);
+	public void updateReceiveDate(long id,long userId) {
+		// TODO Auto-generated method stub	
+		/*SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");  
+		String strDate = dFormat.format(new Date());  
+		Message msg=messageDao.getMessage(id);
+		msg.setSend_date( dateFormat.parse(strDate));
+		*/
+		messageDao.updateReceiveDate(id,userId);
 		
 	}
 

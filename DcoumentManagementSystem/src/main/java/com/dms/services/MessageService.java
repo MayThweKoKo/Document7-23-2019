@@ -1,6 +1,6 @@
 package com.dms.services;
 
-import java.util.Date;
+
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public interface  MessageService {
 	public List<MessageDto> getSentMessage(long id);
 	public List<MessageDto> getReceivedMessage(long id);
 	public MessageDto getMessage(long msgId,long userId);
-	public void updateReceiveDate(Date date);
+	public void updateReceiveDate(long id,long userId);
 	
 	
 

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.dms.dao.User_infoDao;
 import com.dms.dto.MessageDto;
 import com.dms.entity.User_info;
+import com.dms.entity.User_login;
 import com.dms.services.MessageService;
 import com.dms.services.User_detailsService;
 
@@ -42,6 +43,7 @@ public class MessageController {
 	@RequestMapping(value="/messagesend.htm")
 	public String messagesend(Model model) {
 		 model.addAttribute("message",new MessageDto());
+		 model.addAttribute("userLogin",new User_login());
 		 model.addAttribute("toUser",userInfoDao.viewAllUser_info());
 		return "messagesend";
 	}
@@ -90,7 +92,10 @@ public class MessageController {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails)principal).getUsername();
 		User_info user=user_detailsDao.search_User_info(username);
-		 model.addAttribute("message",messageService.getMessage(id, user.getId()));
+		MessageDto msg=messageService.getMessage(id, user.getId());
+		if(msg.getReceivedDate()==null)
+		 messageService.updateReceiveDate(id,user.getId());
+		 model.addAttribute("message",msg);
 		
 		return "message_detail";
 	}

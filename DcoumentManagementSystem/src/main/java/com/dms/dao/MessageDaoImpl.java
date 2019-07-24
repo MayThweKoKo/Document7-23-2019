@@ -1,9 +1,13 @@
 package com.dms.dao;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
@@ -96,6 +100,7 @@ public class MessageDaoImpl implements MessageDao{
 					.add(Projections.property("m.title"),"title")
 					.add(Projections.property("m.send_date"),"sendDate")
 					.add(Projections.property("s.name"),"senderName")
+					.add(Projections.property("received_date"),"receivedDate")
 					.add(Projections.property("m.description"),"description")
 					);
 			c.add(Restrictions.eq("r.id", id));
@@ -122,13 +127,30 @@ public class MessageDaoImpl implements MessageDao{
 		return (MessageDto)c.uniqueResult();
 	}
 	@Override
-	public void updateReceiveDate(Date date) {
+	public void updateReceiveDate(long id,long userId) {
 		// TODO Auto-generated method stub
-		Session session=sessionFactory.getCurrentSession();
-		session.save(date);
-
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");  
+		String strDate = dFormat.format(new Date());  
+		Date date=new Date();
+		try {
+			date = dateFormat.parse(strDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQLQuery query=getCurrentSession().createSQLQuery("update message_send set received_date=:recDate where message_id=:id and receiver_id=:recId");
+		query.setParameter("id", id);
+		query.setParameter("recDate", date);
+		query.setParameter("recId", userId);
+		query.executeUpdate();
 		
-		
+	}
+	@Override
+	public Message getMessage(long msgId) {
+		// TODO Auto-generated method stub
+		Message sms=(Message) getCurrentSession().get(Message.class,msgId);
+		return sms;
 	}
 
 }

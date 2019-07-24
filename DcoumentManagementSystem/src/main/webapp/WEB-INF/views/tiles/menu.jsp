@@ -40,7 +40,7 @@
 					class="badge badge-primary">NEW</span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="<c:url value='/view_receivedMessage.htm'/>">
-					<i class="fas fa-file-alt"></i>Drafts <span
+					<i class="fas fa-file-alt"></i>Received Message <span
 					class="badge badge-primary">NEW</span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="index.html">

@@ -1,6 +1,5 @@
 package com.dms.dao;
 
-import java.util.Date;
 import java.util.List;
 
 import com.dms.dto.MessageDto;
@@ -16,6 +15,7 @@ public interface MessageDao {
 	public List<MessageDto> getSentMessage(long id);
 	public List<MessageDto> getReceivedMessage(long id);
 	public MessageDto getMessage(long msgId,long userId); 
-	public void updateReceiveDate(Date date);
+	public void updateReceiveDate(long id,long userId);
+	public Message getMessage(long msgId);
 	
 }
